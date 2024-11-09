@@ -53,7 +53,7 @@ const Statistics = () => {
       {status == "loading" && <Loading />}
       {status == "succeeded" && (
         <>
-          <h1 className={styles.title}>Result:</h1>
+          <h1 className={styles.title}>IQ Test Statistics</h1>
           <table className={styles.table}>
             <thead className={styles.thead}>
               <tr className={styles.row}>
