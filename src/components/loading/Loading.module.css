@@ -1,0 +1,126 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000; /* Background matches your page */
+  color: #fff;
+}
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #ffd700; /* Use a yellow similar to the design */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinnerInner {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  border: 6px solid transparent;
+  border-top-color: #ffd700; /* Inner circle matches the yellow accent */
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffd700; /* Matches yellow text on the admin page */
+  margin-top: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000; /* Background matches your page */
+  color: #fff;
+}
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #ffd700; /* Use a yellow similar to the design */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinnerInner {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  border: 6px solid transparent;
+  border-top-color: #ffd700; /* Inner circle matches the yellow accent */
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffd700; /* Matches yellow text on the admin page */
+  margin-top: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .spinner {
+    width: 60px;
+    height: 60px;
+    border-width: 6px;
+  }
+
+  .spinnerInner {
+    width: 40px;
+    height: 40px;
+    border-width: 4px;
+  }
+
+  .text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 4px;
+  }
+
+  .spinnerInner {
+    width: 30px;
+    height: 30px;
+    border-width: 3px;
+  }
+
+  .text {
+    font-size: 0.9rem;
+  }
+}
