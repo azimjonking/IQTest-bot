@@ -8,13 +8,56 @@
   text-align: center;
 }
 
+/* result.css */
+
+.result {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.total {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.search input[type="search"] {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #f0f0f050;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.search input[type="search"]::placeholder {
+  color: #888;
+}
+
+.search input[type="search"]:focus {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2); /* Fokustagi input soyasi */
+}
+
 .table {
-  margin-top: 40px;
+  margin-top: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 90%;
+  height: 85%;
   overflow: scroll;
   position: relative;
 }
@@ -37,6 +80,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-bottom: 150px;
 }
 
 .row {

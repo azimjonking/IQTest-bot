@@ -54,6 +54,14 @@ const Statistics = () => {
       {status == "succeeded" && (
         <>
           <h1 className={styles.title}>IQ Test Statistics</h1>
+          <div className={styles.result}>
+            <div className={styles.total}>
+              <span>Total students: 27</span>
+            </div>
+            <div className={styles.search}>
+              <input type="search" placeholder="Search by ..." />
+            </div>
+          </div>
           <table className={styles.table}>
             <thead className={styles.thead}>
               <tr className={styles.row}>
