@@ -16,15 +16,22 @@ const Statistics = () => {
   const [sortByAge, setSortByAge] = useState(false);
   const [sortByScore, setSortByScore] = useState(false);
   const { users, status, error } = useSelector((state) => state.users);
+  const [showData, setShowData] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
 
-  console.log(users);
-  console.log(status);
-  console.log(error);
+  useEffect(() => {
+    setShowData(users);
+  }, [users]);
+
+  // console.log(showData);
+
+  // console.log(users);
+  // console.log(status);
+  // console.log(error);
 
   const sortByNameFunction = () => {
     setSortByName(!sortByName);
@@ -44,10 +51,6 @@ const Statistics = () => {
     setSortByScore(!sortByScore);
   };
 
-  const students = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  ];
-
   return (
     <div className={styles.statistics}>
       {status == "loading" && <Loading />}
@@ -56,7 +59,7 @@ const Statistics = () => {
           <h1 className={styles.title}>IQ Test Statistics</h1>
           <div className={styles.result}>
             <div className={styles.total}>
-              <span>Total students: 27</span>
+              <span>Total students: {showData && showData.length}</span>
             </div>
             <div className={styles.search}>
               <input type="search" placeholder="Search by ..." />
@@ -99,11 +102,11 @@ const Statistics = () => {
             </thead>
 
             <tbody className={styles.tbody}>
-              {students &&
-                students.map((student, i) => {
+              {showData &&
+                showData?.map((user, i) => {
                   return (
                     <Fragment key={i}>
-                      <User student={student} i={i} />
+                      <User user={user} i={i} />
                     </Fragment>
                   );
                 })}

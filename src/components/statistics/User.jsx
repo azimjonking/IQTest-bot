@@ -1,24 +1,24 @@
 import styles from "./Statistics.module.css";
-const User = ({ student, i }) => {
+const User = ({ user, i }) => {
   return (
     <tr className={styles.row}>
       <td>
         <span>{i + 1}</span>
       </td>
       <td className={styles.fullname}>
-        <span>Azimjon Jalilov</span>
+        <span>{user.first_name.toLowerCase()}</span>
       </td>
       <td className={styles.phone}>
-        <span>+998974581122</span>
+        <span>+{user.phone_number}</span>
       </td>
       <td className={styles.age}>
-        <span>17</span>
+        <span>{user.year_old}</span>
       </td>
       <td className={styles.score}>
-        <span>15</span>
+        <span>{user.correctAnswersCount}</span>
       </td>
       <td className={styles.address}>
-        <span>Namangan</span>
+        <span>{user.region.toLowerCase()}</span>
       </td>
     </tr>
   );
