@@ -129,3 +129,10 @@
   border: none;
   cursor: pointer;
 }
+
+@media screen and (max-width: 991px) {
+  .thead,
+  .tbody {
+    width: max-content;
+  }
+}

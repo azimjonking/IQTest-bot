@@ -37,18 +37,47 @@ const Statistics = () => {
     setSortByName(!sortByName);
     setSortByAge(false);
     setSortByScore(false);
+    const sortData = users.toSorted((a, b) =>
+      sortByName
+        ? a.first_name.localeCompare(b.first_name)
+        : b.first_name.localeCompare(a.first_name)
+    );
+
+    setShowData(sortData);
   };
 
   const sortByAgeFunction = () => {
     setSortByName(false);
     setSortByAge(!sortByAge);
     setSortByScore(false);
+    const sortData = users.toSorted((a, b) =>
+      sortByAge ? a.year_old - b.year_old : b.year_old - a.year_old
+    );
+
+    setShowData(sortData);
   };
 
   const sortByScoreFunction = () => {
     setSortByName(false);
     setSortByAge(false);
     setSortByScore(!sortByScore);
+    const sortData = users.toSorted((a, b) =>
+      sortByScore
+        ? a.correctAnswersCount - b.correctAnswersCount
+        : b.correctAnswersCount - a.correctAnswersCount
+    );
+
+    setShowData(sortData);
+  };
+
+  const filterBySearching = (e) => {
+    const filterData = users.filter(
+      (user) =>
+        user.first_name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        user.phone_number.includes(e.target.value) ||
+        user.region.toLowerCase().includes(e.target.value)
+    );
+    setShowData(filterData);
   };
 
   return (
@@ -62,7 +91,11 @@ const Statistics = () => {
               <span>Total students: {showData && showData.length}</span>
             </div>
             <div className={styles.search}>
-              <input type="search" placeholder="Search by ..." />
+              <input
+                type="search"
+                placeholder="Search by ..."
+                onChange={filterBySearching}
+              />
             </div>
           </div>
           <table className={styles.table}>
