@@ -1,5 +1,6 @@
 import { Fragment, useState, useEffect } from "react";
 import styles from "./Statistics.module.css";
+import staticData from "../../staticData/staticData.json";
 import User from "./User";
 import {
   FaSortAlphaDown,
@@ -17,6 +18,7 @@ const Statistics = () => {
   const [sortByScore, setSortByScore] = useState(false);
   const { users, status, error } = useSelector((state) => state.users);
   const [showData, setShowData] = useState(null);
+  const [allData, setAllData] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,11 +26,15 @@ const Statistics = () => {
   }, []);
 
   useEffect(() => {
-    setShowData(users);
+    const data = users && [...users, ...staticData];
+    setAllData(data);
   }, [users]);
 
-  // console.log(showData);
+  useEffect(() => {
+    setShowData(allData);
+  }, [allData]);
 
+  // console.log(showData);
   // console.log(users);
   // console.log(status);
   // console.log(error);
@@ -37,7 +43,7 @@ const Statistics = () => {
     setSortByName(!sortByName);
     setSortByAge(false);
     setSortByScore(false);
-    const sortData = users.toSorted((a, b) =>
+    const sortData = allData.toSorted((a, b) =>
       sortByName
         ? a.first_name.localeCompare(b.first_name)
         : b.first_name.localeCompare(a.first_name)
@@ -50,7 +56,7 @@ const Statistics = () => {
     setSortByName(false);
     setSortByAge(!sortByAge);
     setSortByScore(false);
-    const sortData = users.toSorted((a, b) =>
+    const sortData = allData.toSorted((a, b) =>
       sortByAge ? a.year_old - b.year_old : b.year_old - a.year_old
     );
 
@@ -61,7 +67,7 @@ const Statistics = () => {
     setSortByName(false);
     setSortByAge(false);
     setSortByScore(!sortByScore);
-    const sortData = users.toSorted((a, b) =>
+    const sortData = allData.toSorted((a, b) =>
       sortByScore
         ? a.correctAnswersCount - b.correctAnswersCount
         : b.correctAnswersCount - a.correctAnswersCount
@@ -71,7 +77,7 @@ const Statistics = () => {
   };
 
   const filterBySearching = (e) => {
-    const filterData = users.filter(
+    const filterData = allData.filter(
       (user) =>
         user.first_name.toLowerCase().includes(e.target.value.toLowerCase()) ||
         user.phone_number.includes(e.target.value) ||
